@@ -1,0 +1,373 @@
+
+==================== FINAL INTERFACE ====================
+2017-07-27 13:36:03.2657876 UTC
+
+interface wordGame-0.1.0.0-Ht2VxeBEw2A5H5gLSwfVZ:Lib 8002
+  interface hash: 9d02b41cdde6852c1af4f448d72eb202
+  ABI hash: a070ee8621750b379c970dbb58ef644d
+  export-list hash: 4293d7bed1957f54a2a0f5e42f9ff2db
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 7b66f75b788b6f32f8e1b0c9ced4bd9a
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Lib.displayGrid
+  Lib.findWord
+  Lib.findWords
+  Lib.findWordsInLine
+  Lib.formatGrid
+  Lib.getLines
+  Lib.grid
+  Lib.languages
+  Lib.skew
+module dependencies:
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:Data.Foldable 254e836c2d813d34e47feb29bb8d40ed
+import  -/  base-4.9.1.0:Data.List 7349774f430841349c90dfd1144aea97
+import  -/  base-4.9.1.0:Data.Maybe ecf0c6f81372d9b58b142d5e758ea51b
+import  -/  base-4.9.1.0:Data.OldList c9282ee91951bdcbd918d2960562c007
+import  -/  base-4.9.1.0:GHC.Base 4caea1123ecf4b46e27cbccd6d279377
+import  -/  base-4.9.1.0:GHC.List d11eb227c1c6fbfd89bb781d72eaea0d
+import  -/  base-4.9.1.0:Prelude 74b3e204395920329f6de9d97206abe9
+import  -/  base-4.9.1.0:System.IO 5daf3f384209c11d9566e3409af8ec5d
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+b645f42b2296d6b2004cf0438a04723b
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module Lib.$trModule2 Lib.$trModule1) -}
+dfa32aa0997a1cab8d8f275079cb3e03
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Lib"#) -}
+6c3d911e2dd771dff2258b68c7eab887
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "wordGame-0.1.0.0-Ht2VxeBEw2A5H5gLSwfVZ"#) -}
+468620a7685e1e141f265e52b222f38a
+  type Grid = [GHC.Base.String]
+7b4d51ab10eef9e34e0eec6edff37098
+  displayGrid :: Lib.Grid -> GHC.Types.IO ()
+  {- Arity: 2, Strictness: <L,1*U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Lib.displayGrid1
+                  `cast`
+                (<Lib.Grid>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+aa7c5b738ff4a282365298f6c1a735d7
+  displayGrid1 ::
+    Lib.Grid
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2, Strictness: <L,1*U><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (grid24 :: Lib.Grid)
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 GHC.IO.Handle.Text.hPutStr2
+                   GHC.IO.Handle.FD.stdout
+                   (Data.OldList.unlines grid24)
+                   GHC.Types.True
+                   eta) -}
+72cd2b6406437911cd863df7c22b7ae3
+  findWord ::
+    Lib.Grid -> GHC.Base.String -> GHC.Base.Maybe GHC.Base.String
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><L,U>,
+     Unfolding: (\ (grid24 :: Lib.Grid) (word :: GHC.Base.String) ->
+                 letrec {
+                   go :: [[GHC.Types.Char]] -> Data.Monoid.Any
+                     {- Arity: 1, Strictness: <S,1*U> -}
+                   = \ (ds :: [[GHC.Types.Char]]) ->
+                     case ds of wild {
+                       [] -> GHC.Types.False `cast` (Sym (Data.Monoid.N:Any[0]))
+                       : y ys
+                       -> case Data.OldList.isInfixOf
+                                 @ GHC.Types.Char
+                                 GHC.Classes.$fEqChar
+                                 word
+                                 y of wild1 {
+                            GHC.Types.False -> go ys
+                            GHC.Types.True
+                            -> GHC.Types.True `cast` (Sym (Data.Monoid.N:Any[0])) } }
+                 } in
+                 case (go (Lib.getLines grid24))
+                        `cast`
+                      (Data.Monoid.N:Any[0]) of wild {
+                   GHC.Types.False -> GHC.Base.Nothing @ GHC.Base.String
+                   GHC.Types.True -> GHC.Base.Just @ GHC.Base.String word }) -}
+1119da2d089aeac8684e20b2f8c520d6
+  findWords :: Lib.Grid -> [GHC.Base.String] -> [GHC.Base.String]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (grid24 :: Lib.Grid) (word :: [GHC.Base.String]) ->
+                 Data.Maybe.catMaybes1
+                   @ GHC.Base.String
+                   (GHC.Base.build
+                      @ (GHC.Base.Maybe GHC.Base.String)
+                      (\ @ b1
+                         (c :: GHC.Base.Maybe GHC.Base.String -> b1 -> b1)[OneShot]
+                         (n :: b1)[OneShot] ->
+                       GHC.Base.foldr
+                         @ [GHC.Types.Char]
+                         @ b1
+                         (GHC.Base.mapFB
+                            @ (GHC.Base.Maybe GHC.Base.String)
+                            @ b1
+                            @ [GHC.Types.Char]
+                            c
+                            (Lib.findWord grid24))
+                         n
+                         word))) -}
+6719ef77a3f169886a15270acd2b81db
+  findWordsInLine ::
+    GHC.Base.String -> GHC.Base.String -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Unfolding: (Data.OldList.isInfixOf
+                   @ GHC.Types.Char
+                   GHC.Classes.$fEqChar) -}
+2d1b4ffbc23e0c82d450453b96882d28
+  formatGrid :: Lib.Grid -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (0, True, True) Data.OldList.unlines -}
+cc7f5d5c38b785118b18852ea24b1b39
+  getLines :: Lib.Grid -> [[GHC.Types.Char]]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,U>,
+     Unfolding: (\ (grid24 :: Lib.Grid) ->
+                 let {
+                   lines :: [[GHC.Types.Char]]
+                   = GHC.Base.++
+                       @ [GHC.Types.Char]
+                       grid24
+                       (GHC.Base.++
+                          @ [GHC.Types.Char]
+                          (Data.OldList.transpose @ GHC.Types.Char grid24)
+                          (GHC.Base.++
+                             @ [GHC.Types.Char]
+                             (Data.OldList.transpose @ GHC.Types.Char (Lib.skew grid24))
+                             (Data.OldList.transpose
+                                @ GHC.Types.Char
+                                (Lib.skew
+                                   (GHC.Base.map
+                                      @ [GHC.Types.Char]
+                                      @ [GHC.Types.Char]
+                                      (GHC.List.reverse @ GHC.Types.Char)
+                                      grid24)))))
+                 } in
+                 GHC.Base.++
+                   @ [GHC.Types.Char]
+                   lines
+                   (GHC.Base.map
+                      @ [GHC.Types.Char]
+                      @ [GHC.Types.Char]
+                      (GHC.List.reverse @ GHC.Types.Char)
+                      lines)) -}
+2d86449d7e0ad43622e593f94ce0b9df
+  grid :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid23 Lib.grid1) -}
+5fa362b9081ee0b8899d51b8bad30315
+  grid1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid22 Lib.grid2) -}
+b6d20c49ad5c193db0ffe7f19cb9014b
+  grid10 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.grid13
+                   Lib.grid11) -}
+d33a101a7c3a82576107631b0be0e38f
+  grid11 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.grid12
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+672218f899dd5949f159bc950c572883
+  grid12 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "________CN_____"#) -}
+7e5e8218c1cc3a415e294409aee251a0
+  grid13 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "_________O_____"#) -}
+60ab33d46a8f794d49ee6229071e8806
+  grid14 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "_________HB____"#) -}
+ef4e09d4aba17ed23519f4225c38ba00
+  grid15 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "____L_E__T_O___"#) -}
+cad127a317ef4cc1c6e7517fb6846a28
+  grid16 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "____I__M_Y__L__"#) -}
+4bc01db570d5f053df9c6176774c133c
+  grid17 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "____S_LREP_____"#) -}
+632b8c24a8c72ee3f38f73affa071f32
+  grid18 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "__PHP____H_____"#) -}
+8980bfcb4be739856802385f0d72c7b0
+  grid19 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "__R___B___C____"#) -}
+5eb91aa447f4ba79bc5e29f06f19a772
+  grid2 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid21 Lib.grid3) -}
+93c78490410d8fabd03bbf8035d6e2ec
+  grid20 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "__A__A_____S__Y"#) -}
+b3305dffb1f6af69a13cdded955e3980
+  grid21 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "__HASKELL____B_"#) -}
+d99c258fa77001598edabf1b744707f4
+  grid22 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "__SI________U__"#) -}
+d42217840a6a032545e13ff689580530
+  grid23 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "__C________R___"#) -}
+40daad6cf90b5a8e6f8d31be5f043e08
+  grid3 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid20 Lib.grid4) -}
+b6935d660c75c3e9dd3af3e913a3e67e
+  grid4 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid19 Lib.grid5) -}
+364c6a154b048a024e48669912ebf31e
+  grid5 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid18 Lib.grid6) -}
+57d82e7ce21fc05b717c2eb57027549a
+  grid6 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid17 Lib.grid7) -}
+94a942268e3dea74ea6ac81df37027e9
+  grid7 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid16 Lib.grid8) -}
+c0b4f1036deba730f3e8a254d0a85de0
+  grid8 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.: @ [GHC.Types.Char] Lib.grid15 Lib.grid9) -}
+68f2254da3749c2af79a3cc564d79449
+  grid9 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.grid14
+                   Lib.grid10) -}
+f5584ed8341306a29e84cfad4f42a2c7
+  languages :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages19
+                   Lib.languages1) -}
+f4972800782b70e753739cfd4196def5
+  languages1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages18
+                   Lib.languages2) -}
+fbafaf4d8a268566388abe7c2d4101c0
+  languages10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "SCHEME"#) -}
+2e1992627e720ffe1499bf1647acf2d7
+  languages11 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "RUBY"#) -}
+8ba345c7226fa842a18b50176546100e
+  languages12 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "PYTHON"#) -}
+a29f8fa32f7013e74b3410c3365fae8a
+  languages13 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "PHP"#) -}
+9dcec7ccba5554d9356b5c9fe0e411ec
+  languages14 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "PERL"#) -}
+7aaa5995928622ccee160bbb2f04559c
+  languages15 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "LISP"#) -}
+6d615a30715878219f31b457d0d02bcb
+  languages16 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "HASKELL"#) -}
+290c96a495b13bd1f51bb8c98291c21f
+  languages17 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CSHARP"#) -}
+6a94b38f77d69b53cff77a9f2a44c8d6
+  languages18 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "COBOL"#) -}
+f6b36ef90ccc6a3344aaa0649914c200
+  languages19 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "BASIC"#) -}
+a90c3d098682eeab1b13a7110bde735e
+  languages2 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages17
+                   Lib.languages3) -}
+7df3209885ac455a4d787720d904b406
+  languages3 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages16
+                   Lib.languages4) -}
+883375cfdab2b641d72c91ffb2873ae3
+  languages4 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages15
+                   Lib.languages5) -}
+cd8be21a6ae03579a027fcbb0abb0e95
+  languages5 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages14
+                   Lib.languages6) -}
+f8bc44938210519bab52244b18ef9f61
+  languages6 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages13
+                   Lib.languages7) -}
+7c387863e0a2fd5ef4a13fc5a6f67c61
+  languages7 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages12
+                   Lib.languages8) -}
+8d75cbd9b40c029785d3f753f5bc0b01
+  languages8 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages11
+                   Lib.languages9) -}
+d5eca3496b629b711b4eb474f11aa98c
+  languages9 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Lib.languages10
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+f778a8940f5ce39ef25e247198f06d9b
+  skew :: Lib.Grid -> Lib.Grid
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
